@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>上传图片验证</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			// 获取dom元素
+			var file=document.getElementById('file')
+			file.onchange=function(){
+				// 获取文件路径
+				var path=this.value
+				// console.log(path)
+				// 找出字符串.的位置
+				var loc=path.lastIndexOf('.')   
+				// console.log(loc)
+				// 获取.后的所有字符串
+				var n=path.substr(loc).toLowerCase()
+				// console.log(n)
+				// 判断后缀
+				if(n==='.jpg'||n==='.png'||n==='.gif'||n==='.jpeg'){
+					alert('上传的格式正确')
+				}else{
+					alert('上传的格式错误')
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<span>上传文件格式：</span>
+		<input type="file" name="" id="file">
+	</div>
+</body>
+</html>

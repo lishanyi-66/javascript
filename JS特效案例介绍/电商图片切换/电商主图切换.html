@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>电商主图切换</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#box{
+			border: solid 1px #ccc;
+			width: 450px;
+			height: 70px;
+			padding-top:430px;
+			background: url('image/image01.jpg') no-repeat;
+		}
+		#box ul li{
+			display: inline-block;
+			margin-left: 15px;
+
+		}
+		#box ul li img{
+			width: 70px;
+			height: 70px;
+		}
+	</style>
+</head>
+<body>
+	<div id='box'>
+		<ul>
+			<li class="item">
+				<img src="image/image01.jpg">
+			</li>
+			<li class="item">
+				<img src="image/image02.jpg">
+			</li>
+			<li class="item">
+				<img src="image/image03.jpg">
+			</li>
+			<li class="item">
+				<img src="image/image04.jpg">
+			</li>
+			<li class="item">
+				<img src="image/image05.jpg">
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		 <!-- 获取事件源 -->
+		 // 函数判断
+		 function $(id){
+		 	return typeof id ==='string'?document.getElementById(id):null;
+		 }
+		 var items=document.getElementsByClassName('item');
+		 // 遍历每个li
+		 for(let i=0;i<items.length;i++){
+		 	items[i].onmouseover=function(){
+		 		console.log($('box'))
+		 		var j=i+1
+		 		// console.log(i)
+		 		$('box').style.background=`url(image/image0${j}.jpg) no-repeat`
+		 	}
+		 }
+	</script>
+</body>
+</html>

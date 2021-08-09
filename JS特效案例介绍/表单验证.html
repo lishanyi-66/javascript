@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>表单验证</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+
+		}
+		html{
+			height: 100%;
+			width: 100%
+		}
+		body{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#box{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			/*border: 1px solid red;*/
+			/*margin: auto;*/
+			width: 50%;
+			height: 50%;
+			background-color: #eee;
+			font-size: 24px;
+		}
+		#score{
+			width: 200px;
+			height: 24px;
+			margin-right: 10px;
+			padding-left: 5px;
+			font-size: 16px;
+		}
+		.right{
+			color: green;
+		}
+		.error{
+			color: red;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<label for="userscore">你的成绩：</label>
+		<input type="text" name="" placeholder="请输入你的成绩" id="score">
+		<span id="prompt">请输入你的成绩</span>
+	</div>
+	<script type="text/javascript">
+		function $(id){
+			return typeof id==='string'?document.getElementById(id):null;
+		}
+		// 当输出框失去焦点的时候
+		$('score').onblur=function(){
+			var value=parseFloat(this.value)
+			console.log(isNaN(value))
+			if(isNaN(value)){
+				$('prompt').innerHTML='输入的成绩不正确'
+				$('prompt').className='error'
+				this.style.borderColor='red'
+			}else if(value>=0&&value<=100){
+				// 合法的
+				$('prompt').innerHTML='输入的成绩正确'
+				$('prompt').className='right'
+				this.style.borderColor='green'
+			}else{
+				// 超出范围
+				$('prompt').innerHTML='成绩必须在0-100之间'
+				$('prompt').className='error'
+				this.style.borderColor='red'
+			}
+	
+		}
+		// 当输出框获得焦点，恢复原来的状态
+		$('score').onfocus=function(){
+			$('prompt').innerHTML='请输入你的成绩'
+				$('prompt').className=''
+				this.style.borderColor=''
+				this.value=''
+		}
+	</script>
+</body>
+</html>

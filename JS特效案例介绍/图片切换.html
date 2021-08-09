@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>图片切换</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0
+		}
+		html{
+			width: 100%;
+			height: 100%
+		}
+		body{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		img{
+			display: block;
+		}
+		div{
+			display: flex;
+			position: relative;
+			/*width: 100%*/
+			
+		}
+		button{
+			outline: none;
+			border:none;
+			width: 90px;
+			background-color: transparent;
+
+		}
+		#prev{
+			position: absolute;
+			left: 30px;
+			bottom: 200px;
+			background-color: rgba(255,255,255,0.5);
+			border-radius: 30px;
+			width: 60px;
+			height: 60px;
+
+		}
+		#next{
+			position: absolute;
+			right: 30px;
+			bottom: 200px;
+			background-color: rgba(255,255,255,0.5);
+			border-radius: 30px;
+			width: 60px;
+			height: 60px;
+		}
+
+	</style>
+	
+</head>
+<body>
+	<div>
+		<button id='prev'>上一张</button>
+	<img src="image/image01.png" id='banner' > 
+	
+	<button id='next'>下一张</button>
+	</div>
+	<script type="text/javascript">
+		var Banner=document.getElementById('banner');
+		var prevBtn=document.getElementById('prev');
+		var nextBtn=document.getElementById('next');
+		var minIndex=1;maxIndex=6;currentIndex=minIndex;
+		//监听按钮的点击
+		// 下一张按钮点击
+		nextBtn.onclick=function(){
+			// alert('被点击了')
+			// currentIndex++;
+			if(currentIndex===maxIndex){
+				currentIndex=minIndex
+			}else{
+				currentIndex++
+			};
+			Banner.setAttribute('src',`image/image0${currentIndex}.png`)
+		}
+		// 上一张按钮点击
+		prevBtn.onclick=function(){
+			if(currentIndex===minIndex){
+				currentIndex=maxIndex
+			}else{
+				currentIndex--
+			};
+			Banner.setAttribute('src',`image/image0${currentIndex}.png`)
+		}
+
+	</script>
+	
+</body>
+</html>

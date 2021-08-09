@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>图片切换</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 400px;
+			height: 400px;
+			background-color: #FE7768;
+		}
+		li{
+			float: left;
+			margin: 20px;
+			list-style: none;
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+		}
+		
+		.active{
+			border: solid 1px #000;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<ul>
+		<li class="boxli active" style="background-color:#FE7768">01</li>
+		<li class="boxli" style="background-color:#7D5EE6">02</li>
+		<li class="boxli" style="background-color:#74FCDA">03</li>
+		<li class="boxli" style="background-color:#E6E635">04</li>
+		<li class="boxli" style="background-color:#FF9D61">05</li>
+	</ul>
+<script type="text/javascript">
+	var box=document.getElementById('box')
+	var boxLi=document.getElementsByClassName('boxli')
+	// 遍历集合，给每个img标签添加事件
+	for(var i=0;i<boxLi.length;i++){
+		boxLi[i].onmousemove=function(){
+			// for(var j=0;j<boxLi.length;j++){
+			// 	boxLi[j].setAttribute('class','');
+			// }
+			var backColor=this.getAttribute('style')
+			// console.log(backColor)
+			var rgb=backColor.slice(-6)
+			console.log(rgb)
+			box.style.backgroundColor=`#${rgb}`
+			this.setAttribute('class','active')
+		}
+	}
+
+	// 总结：getAttribute获取的是属性值，也就是style class 内联样式
+</script>
+</body>
+</html>

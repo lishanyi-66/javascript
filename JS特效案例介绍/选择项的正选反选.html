@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>正选反选</title>
+</head>
+<body>
+	<div id="panel">
+		<h3>音乐歌单</h3>
+		<div id="panel-content">
+			<input type="checkbox" name="">晴天
+			<input type="checkbox" name="">遇见
+			<input type="checkbox" name="">你说
+			<input type="checkbox" name="">后来
+			<input type="checkbox" name="">谢谢你
+		</div>
+		<div class='panel-footer'>
+			<hr>
+			<button id='allSelect'>全选</button>
+			<button id='cancelSelect'>取消全选</button>
+			<button id='reverseSelect'>反选</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		<!-- 获取ID -->
+		function $(id){
+			return typeof id ==='string'?document.getElementById(id):null;
+		}
+		// 获取所有的复选框
+		var inputs=document.getElementsByTagName('input');
+		// 全部选中
+		$('allSelect').onclick = function(){
+			for(var i=0;i<inputs.length;i++){
+				inputs[i].checked=true;
+			}
+		}
+		// 取消选中
+		$('cancelSelect').onclick=function(){
+			for(var i=0;i<inputs.length;i++){
+				inputs[i].checked=false;
+			}
+		}
+		// 反选
+		$('reverseSelect').onclick=function(){
+			for(var i=0;i<inputs.length;i++){
+				inputs[i].checked=!inputs[i].checked
+			}
+		}
+
+	</script>
+</body>
+</html>
