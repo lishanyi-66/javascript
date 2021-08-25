@@ -314,3 +314,50 @@ $().test()  //输出结果是2
 * 每个函数function都有一个prototype，即显式原型
 * 每个实例对象都有一个__proto__ 可称为隐式原型
 * 对象的隐式原型的值为其对应构造函数的显式原型的值
+
+
+### 第十节
+#### 原型链
+* 访问一个电源线的属性时
+    * 先在自身属性中查找，找到返回
+    * 如果没有，再沿着__proto__ 这条链向上查找，找到返回
+    * 如果最终没找到，返回undefined
+* 别名：隐式原型链
+* 作用：查找对象的属性
+
+### 第十一节
+#### 原型链的补充
+* 函数的显示原型指向的对象默认是空的Object实例对象（但是Object不满足）
+``` javascript
+console.log(Fn.prototype instanceof Object) //true
+console.log(Object.prototype instanceof Object) //false
+console.log(Function.prototype instanceof Object) //true
+```
+
+* 所有函数都是Function的实例（包含Function）
+``` javascript
+console.log(Function.__proto__===Function.prototype)
+```
+* Object的原型对象是原型链的尽头
+``` javascript
+console.log(Object.prototype.__proto__)//null
+```
+
+
+### 第十二节
+#### 原型链的属性
+* 读取对象的属性值时，会自动到原型链中查找
+* 设置对象的属性值时：不会查找原型链，如果当前对象中没有此属性，直接添加属性并设置其值
+* 方法一般定义在原型中，属性一般通过构造函数定义在对象本身上
+   
+``` javascript
+function Fn(){}
+Fn.prototype.a='xxx'
+var fn1= new Fn()
+console.log(fn1.a)
+
+var fn2=new Fn()
+fn2.a='yyy'
+console.log(fn1.a)
+```
+  
